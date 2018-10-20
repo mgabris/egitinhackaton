@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.estimote.notification.R;
@@ -19,8 +21,9 @@ public class BuyClActivity extends AppCompatActivity {
     public void setNotification(Integer time) {
         Toast.makeText(this, "Bought ticket " +  time,
                 Toast.LENGTH_SHORT).show();
+        CommonVars.sharedPreferences.edit().putLong("clValidTimestampMs", System.currentTimeMillis()).putLong("validityOffsetMs", time * 1000L).commit();
+        NotificationsManager.validityOffsetMs = time * 1000L;
         finishAndRemoveTask();
-        NotificationsManager.enterCooldownMs = time * 1000L;
     }
 
     public void a(View v) {
@@ -37,5 +40,9 @@ public class BuyClActivity extends AppCompatActivity {
 
     public void d(View v) {
         setNotification(90);
+    }
+
+    public void back(View v) {
+        finishAndRemoveTask();
     }
 }

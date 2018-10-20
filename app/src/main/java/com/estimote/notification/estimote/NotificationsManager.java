@@ -37,7 +37,7 @@ public class NotificationsManager {
     private Notification goodbyeNotification;
     private int notificationId = 1;
 
-    private static Long validityOffsetMs = 60000L;
+    public static Long validityOffsetMs = 60000L;
     public static Long enterCooldownMs = 00000L;
     private Long lastEnterTimestampMs = CommonVars.sharedPreferences.getLong("lastEnterTimestampMs", 0L);
 
@@ -97,13 +97,13 @@ public class NotificationsManager {
                         CommonVars.sharedPreferences.edit().putLong("lastEnterTimestampMs", lastEnterTimestampMs).commit();
 
                         // Verify purchased ticket PCL.
-                        if (currentTimestampMs < (CommonVars.pclValidTimestampMs - validityOffsetMs)) {
+                        if (CommonVars.sharedPreferences.getString("pcl", "none").contentEquals("active")) {
                             Log.d("Clooney", "PCL detected");
                             return null;
                         }
 
                         // Verify purchased ticket CL.
-                        if (currentTimestampMs < (CommonVars.clValidTimestampMs - validityOffsetMs)) {
+                        if (currentTimestampMs < (CommonVars.sharedPreferences.getLong("clValidTimestampMs",0L) + CommonVars.sharedPreferences.getLong("validityOffsetMs",0L))) {
                             Log.d("Clooney", "CL detected");
                             return null;
                         }

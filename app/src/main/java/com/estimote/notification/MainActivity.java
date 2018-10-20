@@ -1,5 +1,6 @@
 package com.estimote.notification;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -16,7 +17,10 @@ import kotlin.jvm.functions.Function0;
 import kotlin.jvm.functions.Function1;
 import android.content.Intent;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 //
@@ -27,22 +31,36 @@ public class MainActivity extends AppCompatActivity {
 
     public void setButtons() {
         boolean carted = CommonVars.sharedPreferences.getBoolean("cart", false);
-        TextView cartText = (TextView)findViewById(R.id.textView3);
-        Button cartButton = (Button)findViewById(R.id.ticket);
+
+        TextView cartText = findViewById(R.id.textView3);
+        ImageView cartImage = findViewById(R.id.imageView);
+
+        cartText.setTextColor(Color.BLACK);
         if (carted) {
-            cartText.setText("carted");
-            cartButton.setEnabled(true);
+            cartImage.setImageResource(R.mipmap.konfiguracia2);
+            cartText.setText("1111-2222-3333-4444");
         } else {
-            cartText.setText("not carted");
-            cartButton.setEnabled(false);
+            cartImage.setImageResource(R.mipmap.konfiguracia1);
+            cartText.setText("4444-3333-2222-1111");
         }
+
         TextView pclText = findViewById(R.id.textView2);
         String pcl = CommonVars.sharedPreferences.getString("pcl", "none");
-        pclText.setText(pcl);
+        switch (pcl) {
+            case "none":
+                pclText.setTextColor(Color.WHITE);
+                break;
+            case "expired":
+                pclText.setTextColor(Color.RED);
+                break;
+            case "active":
+                pclText.setTextColor(Color.GREEN);
+                break;
+        }
     }
 
     public void setDefault() {
-        CommonVars.sharedPreferences.edit().putBoolean("cart", false).putString("pcl", "none").commit();
+        CommonVars.sharedPreferences.edit().putBoolean("cart", true).putString("pcl", "none").commit();
     }
 
     @Override
