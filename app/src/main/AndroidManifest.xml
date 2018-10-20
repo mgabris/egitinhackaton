@@ -17,6 +17,8 @@
         </activity>
         <activity android:name=".estimote.NotificationActivity">
         </activity>
+        <activity android:name=".estimote.BuyClActivity">
+        </activity>
     </application>
 
 </manifest>

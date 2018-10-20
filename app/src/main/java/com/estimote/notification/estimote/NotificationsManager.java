@@ -38,8 +38,8 @@ public class NotificationsManager {
     private int notificationId = 1;
 
     private static Long validityOffsetMs = 60000L;
-    private static Long enterCooldownMs = 60000L;
-    private Long lastEnterTimestampMs = 0L;
+    public static Long enterCooldownMs = 00000L;
+    private Long lastEnterTimestampMs = CommonVars.sharedPreferences.getLong("lastEnterTimestampMs", 0L);
 
     public NotificationsManager(Context context) {
         this.context = context;
@@ -94,6 +94,7 @@ public class NotificationsManager {
                             return null;
                         }
                         lastEnterTimestampMs = System.currentTimeMillis();
+                        CommonVars.sharedPreferences.edit().putLong("lastEnterTimestampMs", lastEnterTimestampMs).commit();
 
                         // Verify purchased ticket PCL.
                         if (currentTimestampMs < (CommonVars.pclValidTimestampMs - validityOffsetMs)) {

@@ -12,6 +12,7 @@ import com.estimote.notification.R;
 
 
 import android.content.Intent;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -30,20 +31,35 @@ public class NotificationActivity extends AppCompatActivity {
     public void buyPclOnClick(View v) {
         Log.d("Clooney", "Buy PCL Click");
 
-        CommonVars.pclValidTimestampMs = System.currentTimeMillis();
-        finishAndRemoveTask();
+        boolean cart = CommonVars.sharedPreferences.getBoolean("cart", false);
+        if (!cart) {
+            Toast.makeText(this, "FU not carted!",
+                    Toast.LENGTH_SHORT).show();
+        } else {
+            CommonVars.pclValidTimestampMs = System.currentTimeMillis();
+            finishAndRemoveTask();
+        }
     }
 
     public void buyClOnClick(View v) {
         Log.d("Clooney", "Buy CL Click");
 
-        CommonVars.clValidTimestampMs = System.currentTimeMillis();
-        finishAndRemoveTask();
+        boolean cart = CommonVars.sharedPreferences.getBoolean("cart", false);
+        if (!cart) {
+            Toast.makeText(this, "FU not carted!",
+                    Toast.LENGTH_SHORT).show();
+        } else {
+            CommonVars.clValidTimestampMs = System.currentTimeMillis();
+            Intent intent = new Intent(this, BuyClActivity.class);
+            startActivity(intent);
+        }
+
     }
 
     public void ignoreOnClick(View v) {
         Log.d("Clooney", "Ignore Click");
 
+        NotificationsManager.enterCooldownMs = 60000L;
         finishAndRemoveTask();
     }
 }

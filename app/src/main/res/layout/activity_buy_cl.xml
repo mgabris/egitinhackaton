@@ -7,60 +7,50 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.estimote.notification.MainActivity">
+    tools:context="com.estimote.notification.estimote.NotificationActivity">
 
     <Button
-        android:id="@+id/ticket"
+        android:id="@+id/a"
         android:layout_width="356dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="0dp"
         android:layout_marginTop="20dp"
-        android:onClick="onBuyTicket"
-        android:enabled="false"
-        android:text="kup listok" />
+        android:text="Kup PCL"
+        android:onClick="a"/>
 
     <Button
-        android:id="@+id/pcl"
+        android:id="@+id/b"
         android:layout_width="356dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="42dp"
-        android:layout_marginTop="176dp"
-        android:onClick="onPclAdd"
-        android:text="Kpcl" />
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="100dp"
+        android:onClick="b"
+        android:text="Kup PCL" />
 
     <Button
-        android:id="@+id/cart"
+        android:id="@+id/c"
         android:layout_width="356dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="31dp"
-        android:layout_marginTop="362dp"
-        android:onClick="onAddCart"
-        android:text="cart" />
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="182dp"
+        android:onClick="c"
+        android:text="Kup PCL" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="250dp"
-        android:layout_height="68dp"
+    <Button
+        android:id="@+id/d"
+        android:layout_width="356dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="263dp"
-        android:text="fdsfds" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="267dp"
-        android:layout_height="57dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="74dp"
-        android:layout_marginTop="435dp"
-        android:text="TextView" />
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="261dp"
+        android:onClick="d"
+        android:text="Kup PCL" />
 
 </RelativeLayout>
