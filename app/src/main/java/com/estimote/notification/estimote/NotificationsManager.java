@@ -31,8 +31,6 @@ public class NotificationsManager {
 
     public static NotificationsManager self = null;
 
-    public static Long enterCooldownMs = 0L;
-    private Long lastEnterTimestampMs = CommonVars.sharedPreferences.getLong("lastEnterTimestampMs", 0L);
 
     public NotificationsManager(Context context) {
         self = this;
@@ -83,34 +81,21 @@ public class NotificationsManager {
                 .onEnter(new Function1<ProximityZoneContext, Unit>() {
                     @Override
                     public Unit invoke(ProximityZoneContext proximityContext) {
-                        //
-                        Long currentTimestampMs = System.currentTimeMillis();
-                        if ((currentTimestampMs - lastEnterTimestampMs) < enterCooldownMs) {
-                            Log.d("Clooney", "early exit");
-                            return null;
-                        }
-                        lastEnterTimestampMs = System.currentTimeMillis();
-                        CommonVars.sharedPreferences.edit().putLong("lastEnterTimestampMs", lastEnterTimestampMs).commit();
+                        CommonVars.sharedPreferences.edit().putBoolean("isInside", true).commit();
 
-                        // Verify purchased ticket PCL.
-                        if (CommonVars.sharedPreferences.getString("pcl", "none").contentEquals("active")) {
-                            Log.d("Clooney", "PCL detected");
-                            return null;
+                        String lineName = "Unknown";
+                        if (proximityContext != null) {
+                            lineName = proximityContext.getAttachments().get("jan-sehnal-s-proximity-for-5be/title");
                         }
+                        OnEnterFunction.run(lineName);
 
-                        // Verify purchased ticket CL.
-                        if (currentTimestampMs < (CommonVars.sharedPreferences.getLong("clValidTimestampMs",0L) + CommonVars.sharedPreferences.getLong("validityOffsetMs",0L))) {
-                            Log.d("Clooney", "CL detected");
-                            return null;
-                        }
-
-                        // Switch to new screen.
-                        String title = proximityContext.getAttachments().get("jan-sehnal-s-proximity-for-5be/title");
-                        if (title == null) {
-                            title = "unknown";
-                        }
-                        Log.d("Clooney", "Notification triggered");
-                        notificationManager.notify(notificationId, buildNotification(title, "Kup si listok"));
+                        return null;
+                    }
+                })
+                .onExit(new Function1<ProximityZoneContext, Unit>() {
+                    @Override
+                    public Unit invoke(ProximityZoneContext proximityContext) {
+                        CommonVars.sharedPreferences.edit().putBoolean("isInside", false).commit();
 
                         return null;
                     }

@@ -23,8 +23,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="101dp"
-        android:layout_marginTop="105dp"
+        android:layout_marginStart="115dp"
+        android:layout_marginTop="198dp"
         android:alpha="0"
         android:onClick="onBuyTicket"
         android:text="kup listok" />
@@ -35,8 +35,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="66dp"
-        android:layout_marginTop="308dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="433dp"
         android:alpha="0"
         android:onClick="onPclAdd"
         android:text="Kpcl" />
@@ -47,8 +47,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="58dp"
-        android:layout_marginTop="501dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="656dp"
         android:alpha="0"
         android:onClick="onAddCart"
         android:text="cart" />
@@ -59,8 +59,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="128dp"
-        android:layout_marginTop="490dp"
+        android:layout_marginStart="138dp"
+        android:layout_marginTop="631dp"
         android:text="TextView"
         android:textSize="12sp" />
 
@@ -70,8 +70,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="132dp"
-        android:layout_marginTop="294dp"
+        android:layout_marginStart="149dp"
+        android:layout_marginTop="407dp"
         android:text="222-333-444-555"
         android:textColor="@color/colorAccent"
         android:textSize="12sp" />

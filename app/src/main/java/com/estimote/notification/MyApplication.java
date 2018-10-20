@@ -18,7 +18,7 @@ public class MyApplication extends Application {
     public void enableBeaconNotifications() {
         notificationsManager = new NotificationsManager(this);
         notificationsManager.startMonitoring();
-        Log.d("Clooney", "");
+        Log.d("Clooney", "Initialize");
     }
 
 }

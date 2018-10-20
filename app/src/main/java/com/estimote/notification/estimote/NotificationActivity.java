@@ -48,7 +48,8 @@ public class NotificationActivity extends AppCompatActivity {
     public void ignoreOnClick(View v) {
         Log.d("Clooney", "Ignore Click");
 
-        NotificationsManager.enterCooldownMs = 60000L;
+        CommonVars.sharedPreferences.edit().putLong("enterCooldownMs", 60000L).commit();
+        CommonVars.sharedPreferences.edit().putLong("lastEnterTimestampMs", System.currentTimeMillis()).commit();
         finishAndRemoveTask();
     }
 }
