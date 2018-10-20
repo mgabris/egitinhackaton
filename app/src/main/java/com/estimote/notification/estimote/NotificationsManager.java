@@ -9,18 +9,12 @@ import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
-import com.estimote.notification.MainActivity;
-import com.estimote.notification.estimote.NotificationActivity;
 import com.estimote.notification.MyApplication;
 import com.estimote.proximity_sdk.api.ProximityObserver;
 import com.estimote.proximity_sdk.api.ProximityObserverBuilder;
 import com.estimote.proximity_sdk.api.ProximityZone;
 import com.estimote.proximity_sdk.api.ProximityZoneBuilder;
 import com.estimote.proximity_sdk.api.ProximityZoneContext;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
 
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
@@ -33,22 +27,24 @@ public class NotificationsManager {
 
     private Context context;
     private NotificationManager notificationManager;
-    private Notification helloNotification;
-    private Notification goodbyeNotification;
     private int notificationId = 1;
 
-    public static Long validityOffsetMs = 60000L;
-    public static Long enterCooldownMs = 00000L;
+    public static NotificationsManager self = null;
+
+    public static Long enterCooldownMs = 0L;
     private Long lastEnterTimestampMs = CommonVars.sharedPreferences.getLong("lastEnterTimestampMs", 0L);
 
     public NotificationsManager(Context context) {
+        self = this;
         this.context = context;
         this.notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        this.helloNotification = buildNotification("Hello", "You're near your beacon");
-        this.goodbyeNotification = buildNotification("Bye bye", "You've left the proximity of your beacon");
     }
 
-    private Notification buildNotification(String title, String text) {
+    public void doNotification(String title, String text) {
+        notificationManager.notify(notificationId, buildNotification(title, text));
+    }
+
+    public Notification buildNotification(String title, String text) {
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             NotificationChannel contentChannel = new NotificationChannel(
                     "content_channel", "Things near you", NotificationManager.IMPORTANCE_HIGH);

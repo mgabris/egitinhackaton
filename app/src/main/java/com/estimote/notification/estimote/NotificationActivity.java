@@ -5,22 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 
-import com.estimote.mustard.rx_goodness.rx_requirements_wizard.Requirement;
-import com.estimote.mustard.rx_goodness.rx_requirements_wizard.RequirementsWizardFactory;
-import com.estimote.notification.MyApplication;
 import com.estimote.notification.R;
 
 
 import android.content.Intent;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.Toast;
-
-import java.util.List;
-
-import kotlin.Unit;
-import kotlin.jvm.functions.Function0;
-import kotlin.jvm.functions.Function1;
 
 public class NotificationActivity extends AppCompatActivity {
 
