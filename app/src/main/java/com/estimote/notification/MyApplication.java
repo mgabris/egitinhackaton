@@ -1,6 +1,7 @@
 package com.estimote.notification;
 
 import android.app.Application;
+import android.util.Log;
 
 import com.estimote.notification.estimote.NotificationsManager;
 import com.estimote.proximity_sdk.api.EstimoteCloudCredentials;
@@ -17,6 +18,7 @@ public class MyApplication extends Application {
     public void enableBeaconNotifications() {
         notificationsManager = new NotificationsManager(this);
         notificationsManager.startMonitoring();
+        Log.d("Clooney", "");
     }
 
 }

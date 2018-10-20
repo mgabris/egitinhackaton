@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.estimote.notification.estimote.NotificationActivity">
+
+    <Button
+        android:id="@+id/buyPcl"
+        android:layout_width="356dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="20dp"
+        android:text="Kup PCL"
+        android:onClick="buyPclOnClick"/>
+
+    <Button
+        android:id="@+id/buyCl"
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buyPcl"
+        android:layout_alignStart="@+id/textView"
+        android:layout_marginTop="4dp"
+        android:text="Kup CL"
+        android:onClick="buyClOnClick" />
+
+    <Button
+        android:id="@+id/ignore"
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buyPcl"
+        android:layout_alignStart="@+id/textView"
+        android:layout_marginTop="58dp"
+        android:text="Feeling lucky"
+        android:onClick="ignoreOnClick" />
+</RelativeLayout>
