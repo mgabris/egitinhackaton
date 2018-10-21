@@ -8,7 +8,7 @@ public class OnEnterFunction {
         Long currentTimestampMs = System.currentTimeMillis();
         if (
             (currentTimestampMs - CommonVars.sharedPreferences.getLong("lastEnterTimestampMs", 0L))
-            < CommonVars.sharedPreferences.getLong("enterCooldownMs", 0L)
+            < 1000L + CommonVars.sharedPreferences.getLong("enterCooldownMs", 0L)
         ) {
             Log.d("Clooney", "Early exit");
             return;

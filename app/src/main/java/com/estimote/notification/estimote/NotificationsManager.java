@@ -77,7 +77,7 @@ public class NotificationsManager {
 
         ProximityZone zone = new ProximityZoneBuilder()
                 .forTag("clooney-2co")
-                .inCustomRange(1.0)
+                .inCustomRange(5.0)
                 .onEnter(new Function1<ProximityZoneContext, Unit>() {
                     @Override
                     public Unit invoke(ProximityZoneContext proximityContext) {

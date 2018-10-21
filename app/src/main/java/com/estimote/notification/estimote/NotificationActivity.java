@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 
+import com.estimote.notification.MainActivity;
 import com.estimote.notification.R;
 
 
@@ -27,6 +28,7 @@ public class NotificationActivity extends AppCompatActivity {
         //            Toast.LENGTH_SHORT).show();
         //} else {
         CommonVars.sharedPreferences.edit().putString("pcl", "active").commit();
+        MainActivity.self.setButtons();
         finishAndRemoveTask();
         //}
     }
@@ -48,7 +50,7 @@ public class NotificationActivity extends AppCompatActivity {
     public void ignoreOnClick(View v) {
         Log.d("Clooney", "Ignore Click");
 
-        CommonVars.sharedPreferences.edit().putLong("enterCooldownMs", 60000L).commit();
+        CommonVars.sharedPreferences.edit().putLong("enterCooldownMs", 20000L).commit();
         CommonVars.sharedPreferences.edit().putLong("lastEnterTimestampMs", System.currentTimeMillis()).commit();
         finishAndRemoveTask();
     }

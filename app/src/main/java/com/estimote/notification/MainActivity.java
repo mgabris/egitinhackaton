@@ -25,6 +25,8 @@ import android.widget.TextView;
 //
 
 public class MainActivity extends AppCompatActivity {
+    public static MainActivity self = null;
+
 
     public void setButtons() {
         boolean carted = CommonVars.sharedPreferences.getBoolean("cart", false);
@@ -95,6 +97,8 @@ public class MainActivity extends AppCompatActivity {
                                 return null;
                             }
                         });
+
+        self = this;
     }
 
     public void onBuyTicket(View v) {
